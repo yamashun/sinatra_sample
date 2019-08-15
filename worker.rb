@@ -12,8 +12,9 @@ class MyWorker
   include Sidekiq::Worker
 
   def perform(param)
-    sleep 5
     puts "Things are happening. #{param}"
+    `sh #{Dir.getwd}/scripts/deploy.sh`
+    puts $?
   end
 end
 

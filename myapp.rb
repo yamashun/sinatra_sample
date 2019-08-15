@@ -1,14 +1,19 @@
 require 'sinatra'
 require './worker.rb'
 
-class Stream
-  def each
-    100.times { |i| yield "#{i}\n" }
-  end
-end
+configure {
+  set :server, :puma
+}
 
-get '/' do
-  # 'Hello world!'
-  MyWorker.perform_async('hard')
-  Stream.new
+class MyApp < Sinatra::Base
+  get '/hello' do
+    'Hello World!!'
+  end
+
+  post '/deploy' do
+    MyWorker.perform_async('hard')
+    'start async task'
+  end
+
+  run! if app_file == $0
 end

@@ -1,5 +1,5 @@
-# Sinatra sample
-sinataを使ってリクエストを受けて簡単な非同期処理を実行するサンプル
+# Sinatra & Puma sample
+SinataとPumaを使ってリクエストを受けて簡単な非同期処理を実行するサンプル
 
 ## 起動
 bundle install後に以下のコマンドで起動
@@ -16,9 +16,10 @@ $ redis-server
 $ sidekiq -r ./worker.rb -P ./tmp/sidekiq.pid
 ```
 
-### sinatra
+### puma & sinatra
 
 ```sh
-$ ruby myapp.rb
+$ bundle exec pumactl start
+or
+$ bundle exec puma -d -e production -C config/puma.rb
 ```
-

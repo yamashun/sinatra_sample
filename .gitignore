@@ -1,2 +1,4 @@
 /tmp/sidekiq.pid
+/tmp/puma/state
+/tmp/puma/pid
 /dump.rdb
